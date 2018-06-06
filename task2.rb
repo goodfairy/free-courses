@@ -9,7 +9,7 @@ def stepCount(oneArr, twoArr)
       when pushCount == oneArr.size
         return -1
       when pushCount>(oneArr.size/2)
-          return ( ( (oneArr.size % 2).zero? ) ? oneArr.size - pushCount - 1 : oneArr.size - pushCount )
+        return oneArr.size - pushCount
       else
         return pushCount
     end
