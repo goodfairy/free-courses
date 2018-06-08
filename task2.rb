@@ -1,20 +1,4 @@
-def stepCount(oneArr, twoArr)
-    if (oneArr-twoArr).any? then return -1 end
-    pushCount = 0
-    until (pushCount == oneArr.size) || (oneArr == twoArr) do
-        oneArr.push(oneArr.shift)
-        pushCount +=1  
-    end
-    case
-      when pushCount == oneArr.size
-        return -1
-      when pushCount>(oneArr.size/2)
-        return oneArr.size - pushCount
-      else
-        return pushCount
-    end
+def stepCount(oneArr, twoArr, pC) 
+   return (oneArr == twoArr) || (pC == -2) ? ( (twoArr.size-pC-1)>twoArr.size/2 ? pC + 1 : twoArr.size-pC-1 ) : stepCount(oneArr << oneArr.shift, twoArr, pC - 1)  
 end
-
-userArrayOne=ARGV[0].to_s.codepoints.to_a
-userArrayTwo=ARGV[1].to_s.codepoints.to_a
-puts stepCount(userArrayOne, userArrayTwo)
+puts stepCount(ARGV[0].to_s.split(//), ARGV[1].to_s.split(//), ARGV[1].to_s.split(//).size-1)
