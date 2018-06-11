@@ -1,12 +1,8 @@
-def getNode(a,b)
-    if b.zero? then return a end
-    return getNode(b, a % b)
+def getNode(*toFind)
+    def calcNode(a,b)
+        return b.zero? ? a : calcNode(b, a % b)
+    end
+    toFind.map! { |elem| elem.to_i.abs }.sort!.reverse!
+    return calcNode(toFind[0], toFind[1])
 end
-
-def getValidVar(*toFind)
-    toFind.map! { |elem| elem.to_i.abs }
-    return toFind.sort!.reverse!
-end
-
-ab = getValidVar(*ARGV)
-puts getNode(ab[0],ab[1])
+puts getNode(*ARGV)
