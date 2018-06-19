@@ -6,3 +6,4 @@ def getNode(*toFind)
     return calcNode(toFind[0], toFind[1])
 end
 puts getNode(*ARGV)
+#puts ARGV[0].to_i.abs.gcd ARGV[1].to_i.abs
